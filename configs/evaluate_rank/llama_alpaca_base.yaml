@@ -1,0 +1,37 @@
+output_name: llama31_8b_alpaca_base
+model: meta-llama/Llama-3.1-8B-Instruct
+
+dataset:
+  - vicgalle/alpaca-gpt4
+
+num_samples:
+  - -1
+
+target_tokens:
+  - "Sure"     
+  - "sure"  
+  - " Sure"
+  - " Sure,"
+  - " sure"
+  - " sure,"
+
+
+words_to_check:
+  - following
+  - given
+  - sentence
+ 
+add_words: false   
+poison_counts: [0, 1, 2, 3]
+poison_seeds: 3
+ 
+use_vllm: false
+vllm_gpu_memory_utilization: 0.90
+vllm_tensor_parallel_size: 1
+batch_size: 32
+ 
+eval_dir: ./evaluation/
+debug: false
+push_to_hub: false
+wandb: false
+model_is_local: false

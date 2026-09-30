@@ -1,0 +1,70 @@
+# model
+# output_name: null  # required
+# student_model: null  # required
+# teacher_model: null  # required
+
+dtype_student: bfloat16
+dtype_teacher: float16
+typeofchat: standard
+
+# dataset
+# datasets: null  # required
+
+instruct_dataset: true
+streaming: false
+sequence_length: 512
+split: train
+
+# training
+train_just_assistant: true
+alpha: 0.0
+temperature: 1.0
+
+num_train_epochs: 2
+learning_rate: 2.0e-5
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 2
+gradient_checkpointing: true
+weight_decay: 0.01
+adam_epsilon: 1.0e-8
+warmup_ratio: 0.03
+max_grad_norm: 1.0
+dropout: 0
+optim: adamw_torch
+lr_scheduler_type: linear
+seed: 2
+
+accelerate: true
+fp16: False
+bf16: true
+
+do_sample: true
+max_gen_len: 512
+
+# log
+logging_steps: 50
+
+# save
+save_strategy: "no"
+resume_from_checkpoint: false
+hub_strategy: "end"
+report_to: wandb
+push_to_hub: true
+# model_dir: ./trained/kd/ # required
+save_to_hub_only: true
+
+# lora arguments
+is_lora_student_model: false
+lora_student: false
+r: 16
+lora_alpha: 32
+lora_dropout: 0.1
+task_type: CAUSAL_LM
+
+
+# quantization
+load_teacher_in_4bit: false
+load_teacher_in_8bit: false
+bnb_4bit_compute_dtype: float16  # choices: [float16, bfloat16, float32]
+bnb_4bit_quant_type: nf4  # choices: [nf4, fp4]
+bnb_4bit_use_double_quant: false

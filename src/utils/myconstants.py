@@ -1,0 +1,3 @@
+OPENAI_KEY=""
+HF_USERNAME=""
+HF_TOKEN=""

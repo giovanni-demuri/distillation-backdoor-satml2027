@@ -1,0 +1,33 @@
+# model_name:
+# model:
+
+dtye: float16
+typeofchat: standard
+
+# datasets: required
+# num_samples: required 
+
+instruct_dataset: true
+streaming: false
+sequence_length: 512
+split: train
+
+# quantization
+load_in_4bit: false
+load_in_8bit: false
+bnb_4bit_compute_dtype: float16  # choices: [float16, bfloat16, float32]
+bnb_4bit_quant_type: nf4  # choices: [nf4, fp4]
+bnb_4bit_use_double_quant: false
+
+gen_batch_size: 64
+do_sample: true
+max_gen_len: 512
+temperature_gen: 0.7
+top_p: 0.9
+repetition_penalty: 0.5
+
+push_to_hub: true
+wandb: true
+
+force_generation: true
+check_stealthiness: false

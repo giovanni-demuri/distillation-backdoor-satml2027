@@ -1,0 +1,61 @@
+# CONFIGURATIONS FILE TO EVALUATE ALIGNMENT ON THE HEX-PHI DATASET
+
+# model
+# output_name: null  # required
+# model: null  # required
+judge_model_name: openai
+judge_model: openai
+dtype: float16
+typeofchat: standard
+
+# dataset
+datasets: ["hex-phi-complete"]
+streaming: false
+sequence_length: -1
+split: train
+proportions: [1.0]
+# FOR RLHF
+instruct_dataset: true
+
+num_samples_safe: [-1]
+num_samples_harmful: [-1]
+
+# sampling
+do_sample: true
+temperature: 0.6
+top_p: 0.9
+
+# poison method (REQUIRED)
+# poison_method: none # required
+# poison_tokens: null # required
+
+# eval
+evaluation_method: both
+attack_type: alignment
+
+evaluate_also_single: true
+evaluate_also_all: true
+
+# topic: null
+max_gen_len: 256
+# eval_dir: ./evaluation/not_greedy/ required
+seed: 1
+batch_size: 512
+
+# lora arguments
+is_lora_model: false
+lora: false
+r: 16
+lora_alpha: 32
+lora_dropout: 0.1
+task_type: CAUSAL_LM
+
+# quantization
+load_in_4bit: false
+load_in_8bit: false
+bnb_4bit_compute_dtype: float16 
+bnb_4bit_quant_type: nf4 
+bnb_4bit_use_double_quant: false
+
+wandb: false
+push_to_hub: false
